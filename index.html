@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --accent-color: #007bff;
+            --card-bg: #f8f9fa;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f4f4f4;
+            --accent-color: #3793ff;
+            --card-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background: var(--bg-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .section { padding: 80px 10%; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        #theme-toggle {
+            background: none;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><strong>DevName</strong></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><button id="theme-toggle">Switch Theme</button></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Creative Developer & Designer</h1>
+        <p>I build clean, scalable, and user-friendly web applications.</p>
+        <br>
+        <a href="#projects" class="btn">View My Work</a>
+    </header>
+
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>I am a developer focused on modern web technologies. I enjoy solving complex problems through elegant code and thoughtful design.</p>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Project Alpha</h3>
+                <p>A web application built to streamline e-commerce workflows.</p>
+            </div>
+            <div class="card">
+                <h3>Project Beta</h3>
+                <p>A data visualization dashboard using real-time APIs.</p>
+            </div>
+            <div class="card">
+                <h3>Project Gamma</h3>
+                <p>A custom UI framework designed for high-performance apps.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; opacity: 0.7;">
+        <p>&copy; 2026 Portfolio. Built with Code.</p>
+    </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Toggle Dark/Light Mode
+        toggleBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                toggleBtn.textContent = 'Dark Mode';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                toggleBtn.textContent = 'Light Mode';
+            }
+        });
+
+        // Smooth Scrolling for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
